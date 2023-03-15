@@ -1,0 +1,3182 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Linux Commands for DevOps (Actually everyone)">
+      
+      
+      
+      
+        <link rel="prev" href="../day14/">
+      
+      
+        <link rel="next" href="../day16/">
+      
+      <link rel="icon" href="../../images/devops_icon.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>#90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15 - 90DaysOfDevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-commands-for-devops-actually-everyone" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="90DaysOfDevOps" class="md-header__button md-logo" aria-label="90DaysOfDevOps" data-md-component="logo">
+      
+  <img src="../../images/devops_icon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            90DaysOfDevOps
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MichaelCade/90DaysOfDevOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MichaelCade/90DaysOfDevOps
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="90DaysOfDevOps" class="md-nav__button md-logo" aria-label="90DaysOfDevOps" data-md-component="logo">
+      
+  <img src="../../images/devops_icon.svg" alt="logo">
+
+    </a>
+    90DaysOfDevOps
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MichaelCade/90DaysOfDevOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MichaelCade/90DaysOfDevOps
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to 90DaysOfDevOps
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        2022 Edition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        #90DaysOfDevOps - Introduction - Day 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        #90DaysOfDevOps - Application Focused - Day 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        #90DaysOfDevOps - DevOps & Agile - Day 4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        #90DaysOfDevOps - DevOps - The real stories - Day 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        #90DaysOfDevOps - The Go Workspace - Day 10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        #90DaysOfDevOps - Variables & Constants in Go - Day 11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-commands-for-devops-actually-everyone" class="md-nav__link">
+    Linux Commands for DevOps (Actually everyone)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        #90DaysOfDevOps - SSH & Web Server - Day 18
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        #90DaysOfDevOps - Network Protocols - Day 23
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        #90DaysOfDevOps - Network Automation - Day 24
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        #90DaysOfDevOps - Python for Network Automation - Day 25
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        #90DaysOfDevOps - Building our Lab - Day 26
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day32/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day33/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        #90DaysOfDevOps - Installing & Configuring Git - Day 36
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        #90DaysOfDevOps - Gitting to know Git - Day 37
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        #90DaysOfDevOps - Staging & Changing - Day 38
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day39/" class="md-nav__link">
+        #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        #90DaysOfDevOps - Social Network for code - Day 40
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        #90DaysOfDevOps - The Open Source Workflow - Day 41
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Containers - Day 42
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Compose - Day 46
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Networking & Security - Day 47
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        #90DaysOfDevOps - Alternatives to Docker - Day 48
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: IaC - Day 56
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        #90DaysOfDevOps - An intro to Terraform - Day 57
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible: Getting Started - Day 64
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible Playbooks - Day 65
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        #90DaysOfDevOps - What is Jenkins? - Day 71
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        #90DaysOfDevOps - GitHub Actions Overview - Day 75
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        #90DaysOfDevOps - ArgoCD Overview - Day 76
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        #90DaysOfDevOps - ELK Stack - Day 80
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        #90DaysOfDevOps - EFK Stack - Day 82
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        #90DaysOfDevOps - Data Services - Day 85
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day86/" class="md-nav__link">
+        #90DaysOfDevOps - Backup all the platforms - Day 86
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day88/" class="md-nav__link">
+        #90DaysOfDevOps - Application Focused Backup - Day 88
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        #90DaysOfDevOps - Disaster Recovery - Day 89
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        #90DaysOfDevOps - Data & Application Mobility - Day 90
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_92" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_92" id="__nav_2_92_label" tabindex="0">
+          CICD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_92_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_92">
+          <span class="md-nav__icon md-icon"></span>
+          CICD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_92_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_92_1" id="__nav_2_92_1_label" tabindex="0">
+          Jenkins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_92_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_92_1">
+          <span class="md-nav__icon md-icon"></span>
+          Jenkins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+        Steps
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93" id="__nav_2_93_label" tabindex="0">
+          Configmgmt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_93_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93">
+          <span class="md-nav__icon md-icon"></span>
+          Configmgmt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1" id="__nav_2_93_1_label" tabindex="0">
+          Ansible scenario3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1_1" id="__nav_2_93_1_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1_1_1" id="__nav_2_93_1_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_1_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2" id="__nav_2_93_2_label" tabindex="0">
+          Ansible scenario4
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2_1" id="__nav_2_93_2_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2_1_1" id="__nav_2_93_2_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_2_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario4/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3" id="__nav_2_93_3_label" tabindex="0">
+          Ansible scenario5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3_1" id="__nav_2_93_3_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3_1_1" id="__nav_2_93_3_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_3_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario5/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4" id="__nav_2_93_4_label" tabindex="0">
+          Ansible scenario6
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario6
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4_1" id="__nav_2_93_4_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4_1_1" id="__nav_2_93_4_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_4_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario6/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5" id="__nav_2_93_5_label" tabindex="0">
+          Ansible scenario7
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario7
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1" id="__nav_2_93_5_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_5_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1_1" id="__nav_2_93_5_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_5_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario7/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1_2" id="__nav_2_93_5_1_2_label" tabindex="0">
+          Mysql
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_5_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mysql
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario7/roles/mysql/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_94" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_94" id="__nav_2_94_label" tabindex="0">
+          Containers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_94_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_94">
+          <span class="md-nav__icon md-icon"></span>
+          Containers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_94_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_94_1" id="__nav_2_94_1_label" tabindex="0">
+          Elasticsearch logstash kibana
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_94_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_94_1">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch logstash kibana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95" id="__nav_2_95_label" tabindex="0">
+          Monitoring
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_95_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95">
+          <span class="md-nav__icon md-icon"></span>
+          Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1" id="__nav_2_95_1_label" tabindex="0">
+          Elastic Stack
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_95_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1">
+          <span class="md-nav__icon md-icon"></span>
+          Elastic Stack
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1" id="__nav_2_95_1_1_label" tabindex="0">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_95_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+        Extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_2" id="__nav_2_95_1_1_2_label" tabindex="0">
+          Apm server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Apm server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/apm-server/" class="md-nav__link">
+        APM Server extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_3" id="__nav_2_95_1_1_3_label" tabindex="0">
+          Curator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Curator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/curator/" class="md-nav__link">
+        Curator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_4" id="__nav_2_95_1_1_4_label" tabindex="0">
+          Enterprise search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Enterprise search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/enterprise-search/" class="md-nav__link">
+        Enterprise Search extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_5" id="__nav_2_95_1_1_5_label" tabindex="0">
+          Filebeat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Filebeat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/filebeat/" class="md-nav__link">
+        Filebeat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_6" id="__nav_2_95_1_1_6_label" tabindex="0">
+          Logspout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Logspout
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/logspout/" class="md-nav__link">
+        Logspout extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_7" id="__nav_2_95_1_1_7_label" tabindex="0">
+          Metricbeat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Metricbeat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/metricbeat/" class="md-nav__link">
+        Metricbeat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-commands-for-devops-actually-everyone" class="md-nav__link">
+    Linux Commands for DevOps (Actually everyone)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>#90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15</h1>
+
+<h2 id="linux-commands-for-devops-actually-everyone">Linux Commands for DevOps (Actually everyone)</h2>
+<p>I mentioned <a href="../day14/">yesterday</a> that we are going to be spending a lot of time in the terminal with some commands to get stuff done.</p>
+<p>I also mentioned that with our vagrant provisioned VM we can use <code>vagrant ssh</code> and gain access to our box. You will need to be in the same directory as we provisioned it from.</p>
+<p>For SSH you won't need the username and password, you will only need that if you decide to log in to the Virtual Box console.</p>
+<p>This is where we want to be as per below:</p>
+<p><img alt="" src="../Images/Day15_Linux1.png" /></p>
+<h2 id="commands">Commands</h2>
+<p>I cannot cover all the commands here, there are pages and pages of documentation that cover these but also if you are ever in your terminal and you just need to understand options to a specific command we have the <code>man</code> pages short for manual. We can use this to go through each of the commands we touch on during this post to find out more options for each one. We can run <code>man man</code> which will give you the help for manual pages. To escape the man pages you should press <code>q</code> for quit.</p>
+<p><img alt="" src="../Images/Day15_Linux2.png" />
+<img alt="" src="../Images/Day15_Linux3.png" /></p>
+<p><code>sudo</code> If you are familiar with Windows and the right click <code>run as administrator</code> we can think of <code>sudo</code> as very much this. When you run a command with this command you will be running it as <code>root</code> it will prompt you for the password before running the command.</p>
+<p><img alt="" src="../Images/Day15_Linux4.png" /></p>
+<p>For one off jobs like installing applications or services, you might need that <code>sudo command</code> but what if you have several tasks to deal with and you want to live as <code>sudo</code> for a while? This is where you can use <code>sudo su</code> again the same as <code>sudo</code> once entered you will be prompted for your <code>root</code> password. In a test VM like ours, this is fine but I would find it very hard for us to be rolling around as <code>root</code> for prolonged periods, bad things can happen. To get out of this elevated position you simply type in <code>exit</code></p>
+<p><img alt="" src="../Images/Day15_Linux5.png" /></p>
+<p>I find myself using <code>clear</code> all the time, the <code>clear</code> command does exactly what it says it is going to clear the screen of all previous commands, putting your prompt to the top and giving you a nice clean workspace. Windows I think is <code>cls</code> in the .mdprompt.</p>
+<p><img alt="" src="../Images/Day15_Linux6.png" /></p>
+<p>Let's now look at some commands where we can actually create things within our system and then visualise them in our terminal, first of all, we have <code>mkdir</code> which will allow us to create a folder in our system. With the following command, we can create a folder in our home directory called Day15 <code>mkdir Day15</code></p>
+<p><img alt="" src="../Images/Day15_Linux7.png" /></p>
+<p>With <code>cd</code> this allows us to change the directory, so for us to move into our newly created directory we can do this with <code>cd Day15</code> tab can also be used to autocomplete the directory available. If we want to get back to where we started we can use <code>cd ..</code></p>
+<p><img alt="" src="../Images/Day15_Linux8.png" /></p>
+<p><code>rmdir</code> allows for us to remove the directory, if we run <code>rmdir Day15</code> then the folder will be removed (note that this will only work if you have nothing in the folder)</p>
+<p><img alt="" src="../Images/Day15_Linux9.png" /></p>
+<p>I am sure we have all done it where we have navigated to the depths of our file system to a directory and not known where we are. <code>pwd</code> gives us the printout of the working directory, pwd as much as it looks like password it stands for print working directory.</p>
+<p><img alt="" src="../Images/Day15_Linux10.png" /></p>
+<p>We know how to create folders and directories but how do we create files? We can create files using the <code>touch</code> command if we were to run <code>touch Day15</code> this would create a file. Ignore <code>mkdir</code> we are going to see this again later.</p>
+<p><img alt="" src="../Images/Day15_Linux11.png" /></p>
+<p><code>ls</code> I can put my house on this, you will use this command so many times, this is going to list all the files and folders in the current directory. Let's see if we can see that file we just created.</p>
+<p><img alt="" src="../Images/Day15_Linux12.png" /></p>
+<p>How can we find files on our Linux system? <code>locate</code> is going to allow us to search our file system. If we use <code>locate Day15</code> it will report back the location of the file. The bonus round is that if you know that the file does exist but you get a blank result then run <code>sudo updatedb</code> which will index all the files in the file system then run your <code>locate</code> again. If you do not have <code>locate</code> available to you, you can install it using this command <code>sudo apt install mlocate</code></p>
+<p><img alt="" src="../Images/Day15_Linux13.png" /></p>
+<p>What about moving files from one location to another? <code>mv</code> is going to allow you to move your files. Example <code>mv Day15 90DaysOfDevOps</code> will move your file to the 90DaysOfDevOps folder.</p>
+<p><img alt="" src="../Images/Day15_Linux14.png" /></p>
+<p>We have moved our file but what if we want to rename it now to something else? We can do that using the <code>mv</code> command again... WOT!!!? yep we can simply use <code>mv Day15 day15</code> to change to upper case or we could use <code>mv day15 AnotherDay</code> to change it altogether, now use <code>ls</code> to check the file.</p>
+<p><img alt="" src="../Images/Day15_Linux15.png" /></p>
+<p>Enough is enough, let's now get rid (delete)of our file and maybe even our directory if we have one created. <code>rm</code> simply <code>rm AnotherDay</code> will remove our file. We will also use quite a bit <code>rm -R</code> which will recursively work through a folder or location. We might also use <code>rm -R -f</code> to force the removal of all of those files. Spoiler if you run <code>rm -R -f /</code> add sudo to it and you can say goodbye to your system....!</p>
+<p><img alt="" src="../Images/Day15_Linux16.png" /></p>
+<p>We have looked at moving files around but what if I just want to copy files from one folder to another, simply put its very similar to the <code>mv</code> command but we use <code>cp</code> so we can now say <code>cp Day15 Desktop</code></p>
+<p><img alt="" src="../Images/Day15_Linux17.png" /></p>
+<p>We have created folders and files but we haven't put any contents into our folder, we can add contents a few ways but an easy way is <code>echo</code> we can also use <code>echo</code> to print out a lot of things in our terminal, I use echo a lot to print out system variables to know if they are set or not at least. we can use <code>echo "Hello #90DaysOfDevOps" &gt; Day15</code> and this will add this to our file. We can also append to our file using <code>echo "Commands are fun!" &gt;&gt; Day15</code></p>
+<p><img alt="" src="../Images/Day15_Linux18.png" /></p>
+<p>Another one of those commands you will use a lot! <code>cat</code> short for concatenate. We can use <code>cat Day15</code> to see the contents inside the file. Great for quickly reading those configuration files.</p>
+<p><img alt="" src="../Images/Day15_Linux19.png" /></p>
+<p>If you have a long complex configuration file and you want or need to find something fast in that file vs reading every line then <code>grep</code> is your friend, this will allow us to search your file for a specific word using <code>cat Day15 | grep "#90DaysOfDevOps"</code></p>
+<p><img alt="" src="../Images/Day15_Linux20.png" /></p>
+<p>If you are like me and you use that <code>clear</code> command a lot then you might miss some of the commands previously ran, we can use <code>history</code> to find out all those commands we have run prior. <code>history -c</code> will remove the history.</p>
+<p>When you run <code>history</code> and you would like to pick a specific command you can use <code>!3</code> to choose the 3rd command in the list.</p>
+<p>You are also able to use <code>history | grep "Command"</code> to search for something specific.</p>
+<p>On servers to trace back when was a command executed, it can be useful to append the date and time to each command in the history file.</p>
+<p>The following system variable controls this behaviour:</p>
+<pre><code>HISTTIMEFORMAT=&quot;%d-%m-%Y %T &quot;
+</code></pre>
+<p>You can easily add to your bash_profile:</p>
+<pre><code>echo 'export HISTTIMEFORMAT=&quot;%d-%m-%Y %T &quot;' &gt;&gt; ~/.bash_profile
+</code></pre>
+<p>So as useful to allow the history file to grow bigger:</p>
+<pre><code>echo 'export HISTSIZE=100000' &gt;&gt; ~/.bash_profile
+echo 'export HISTFILESIZE=10000000' &gt;&gt; ~/.bash_profile
+</code></pre>
+<p><img alt="" src="../Images/Day15_Linux21.png" /></p>
+<p>Need to change your password? <code>passwd</code> is going to allow us to change our password. Note that when you add your password like this when it is hidden it will not be shown in <code>history</code> however if your command has <code>-p PASSWORD</code> then this will be visible in your <code>history</code>.</p>
+<p><img alt="" src="../Images/Day15_Linux22.png" /></p>
+<p>We might also want to add new users to our system, we can do this with <code>useradd</code> we have to add the user using our <code>sudo</code> command, we can add a new user with <code>sudo useradd NewUser</code></p>
+<p><img alt="" src="../Images/Day15_Linux23.png" /></p>
+<p>Creating a group again requires <code>sudo</code> and we can use <code>sudo groupadd DevOps</code> then if we want to add our new user to that group we can do this by running <code>sudo usermod -a -G DevOps</code> <code>-a</code> is add and <code>-G</code> is group name.</p>
+<p><img alt="" src="../Images/Day15_Linux24.png" /></p>
+<p>How do we add users to the <code>sudo</code> group, this would be a very rare occasion for this to happen but to do this it would be <code>usermod -a -G sudo NewUser</code></p>
+<h3 id="permissions">Permissions</h3>
+<p>read, write and execute are the permissions we have on all of our files and folders on our Linux system.</p>
+<p>A full list:</p>
+<ul>
+<li>0 = None <code>---</code></li>
+<li>1 = Execute only <code>--X</code></li>
+<li>2 = Write only <code>-W-</code></li>
+<li>3 = Write &amp; Execute <code>-WX</code></li>
+<li>4 = Read Only <code>R--</code></li>
+<li>5 = Read &amp; Execute <code>R-X</code></li>
+<li>6 = Read &amp; Write <code>RW-</code></li>
+<li>7 = Read, Write &amp; Execute <code>RWX</code></li>
+</ul>
+<p>You will also see <code>777</code> or <code>775</code> and these represent the same numbers as the list above but each one represents <strong>User - Group - Everyone</strong></p>
+<p>Let's take a look at our file. <code>ls -al Day15</code> you can see the 3 groups mentioned above, user and group have read &amp; write but everyone only has read.</p>
+<p><img alt="" src="../Images/Day15_Linux25.png" /></p>
+<p>We can change this using <code>chmod</code> you might find yourself doing this if you are creating binaries a lot on your systems as well and you need to give the ability to execute those binaries. <code>chmod 750 Day15</code> now run <code>ls -al Day15</code> if you want to run this for a whole folder then you can use <code>-R</code> to recursively do that.</p>
+<p><img alt="" src="../Images/Day15_Linux26.png" /></p>
+<p>What about changing the owner of the file? We can use <code>chown</code> for this operation, if we wanted to change the ownership of our <code>Day15</code> from user <code>vagrant</code> to <code>NewUser</code> we can run <code>sudo chown NewUser Day15</code> again <code>-R</code> can be used.</p>
+<p><img alt="" src="../Images/Day15_Linux27.png" /></p>
+<p>A command that you will come across is <code>awk</code> which comes in real use when you have an output that you only need specific data from. like running <code>who</code> we get lines with information, but maybe we only need the names. We can run <code>who | awk '{print $1}'</code> to get just a list of that first column.</p>
+<p><img alt="" src="../Images/Day15_Linux28.png" /></p>
+<p>If you are looking to read streams of data from standard input, then generate and execute command lines; meaning it can take the output of a command and passes it as an argument of another command. <code>xargs</code> is a useful tool for this use case. If for example, I want a list of all the Linux user accounts on the system I can run. <code>cut -d: -f1 &lt; /etc/passwd</code> and get the long list we see below.</p>
+<p><img alt="" src="../Images/Day15_Linux29.png" /></p>
+<p>If I want to compact that list I can do so by using <code>xargs</code> in a command like this <code>cut -d: -f1 &lt; /etc/passwd | sort | xargs</code></p>
+<p><img alt="" src="../Images/Day15_Linux30.png" /></p>
+<p>I didn't mention the <code>cut</code> command either, this allows us to remove sections from each line of a file. It can be used to cut parts of a line by byte position, character and field. The <code>cut -d " " -f 2 list.txt</code> command allows us to remove that first letter we have and just display our numbers. There are so many combinations that can be used here with this command, I am sure I have spent too much time trying to use this command when I could have extracted data quicker manually.</p>
+<p><img alt="" src="../Images/Day15_Linux31.png" /></p>
+<p>Also to note if you type a command and you are no longer happy with it and you want to start again just hit control + c and this will cancel that line and start you fresh.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=kPylihJRG70">Learn the Linux Fundamentals - Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=VbEx7B_PTOE">Linux for hackers (don't worry you don't need to be a hacker!)</a></li>
+</ul>
+<p>See you on <a href="../day16/">Day16</a></p>
+<p>This is a pretty heavy list already but I can safely say that I have used all of these commands in my day to day, be it from an administering Linux servers or on my Linux Desktop, it is very easy when you are in Windows or macOS to navigate the UI but in Linux Servers, they are not there, everything is done through the terminal.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day14/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day16/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Managing your Linux System, Filesystem &amp; Storage - Day 16" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 90DaysOfDevOps
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3343 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Microsoft Azure Storage Models">
+      
+      
+      
+      
+        <link rel="prev" href="../day31/">
+      
+      
+        <link rel="next" href="../day33/">
+      
+      <link rel="icon" href="../../images/devops_icon.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>#90DaysOfDevOps - Microsoft Azure Storage Models - Day 32 - 90DaysOfDevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#microsoft-azure-storage-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="90DaysOfDevOps" class="md-header__button md-logo" aria-label="90DaysOfDevOps" data-md-component="logo">
+      
+  <img src="../../images/devops_icon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            90DaysOfDevOps
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MichaelCade/90DaysOfDevOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MichaelCade/90DaysOfDevOps
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="90DaysOfDevOps" class="md-nav__button md-logo" aria-label="90DaysOfDevOps" data-md-component="logo">
+      
+  <img src="../../images/devops_icon.svg" alt="logo">
+
+    </a>
+    90DaysOfDevOps
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MichaelCade/90DaysOfDevOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MichaelCade/90DaysOfDevOps
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to 90DaysOfDevOps
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        2022 Edition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        #90DaysOfDevOps - Introduction - Day 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        #90DaysOfDevOps - Application Focused - Day 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        #90DaysOfDevOps - DevOps & Agile - Day 4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        #90DaysOfDevOps - DevOps - The real stories - Day 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        #90DaysOfDevOps - The Go Workspace - Day 10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        #90DaysOfDevOps - Variables & Constants in Go - Day 11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day15/" class="md-nav__link">
+        #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        #90DaysOfDevOps - SSH & Web Server - Day 18
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        #90DaysOfDevOps - Network Protocols - Day 23
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        #90DaysOfDevOps - Network Automation - Day 24
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        #90DaysOfDevOps - Python for Network Automation - Day 25
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        #90DaysOfDevOps - Building our Lab - Day 26
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-storage-models" class="md-nav__link">
+    Microsoft Azure Storage Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Azure Storage Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-services" class="md-nav__link">
+    Storage Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-disks" class="md-nav__link">
+    Managed Disks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine-storage" class="md-nav__link">
+    Virtual Machine Storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-storage" class="md-nav__link">
+    Archive Storage
+  </a>
+  
+    <nav class="md-nav" aria-label="Archive Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-sharing" class="md-nav__link">
+    File Sharing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-media-services" class="md-nav__link">
+    Caching &amp; Media Services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-database-models" class="md-nav__link">
+    Microsoft Azure Database Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Azure Database Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relational-databases" class="md-nav__link">
+    Relational Databases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nosql-solutions" class="md-nav__link">
+    NoSQL Solutions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day33/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        #90DaysOfDevOps - Installing & Configuring Git - Day 36
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        #90DaysOfDevOps - Gitting to know Git - Day 37
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        #90DaysOfDevOps - Staging & Changing - Day 38
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day39/" class="md-nav__link">
+        #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        #90DaysOfDevOps - Social Network for code - Day 40
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        #90DaysOfDevOps - The Open Source Workflow - Day 41
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Containers - Day 42
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Compose - Day 46
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Networking & Security - Day 47
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        #90DaysOfDevOps - Alternatives to Docker - Day 48
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: IaC - Day 56
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        #90DaysOfDevOps - An intro to Terraform - Day 57
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible: Getting Started - Day 64
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible Playbooks - Day 65
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        #90DaysOfDevOps - What is Jenkins? - Day 71
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        #90DaysOfDevOps - GitHub Actions Overview - Day 75
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        #90DaysOfDevOps - ArgoCD Overview - Day 76
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        #90DaysOfDevOps - ELK Stack - Day 80
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        #90DaysOfDevOps - EFK Stack - Day 82
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        #90DaysOfDevOps - Data Services - Day 85
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day86/" class="md-nav__link">
+        #90DaysOfDevOps - Backup all the platforms - Day 86
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day88/" class="md-nav__link">
+        #90DaysOfDevOps - Application Focused Backup - Day 88
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        #90DaysOfDevOps - Disaster Recovery - Day 89
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        #90DaysOfDevOps - Data & Application Mobility - Day 90
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_92" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_92" id="__nav_2_92_label" tabindex="0">
+          CICD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_92_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_92">
+          <span class="md-nav__icon md-icon"></span>
+          CICD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_92_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_92_1" id="__nav_2_92_1_label" tabindex="0">
+          Jenkins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_92_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_92_1">
+          <span class="md-nav__icon md-icon"></span>
+          Jenkins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+        Steps
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93" id="__nav_2_93_label" tabindex="0">
+          Configmgmt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_93_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93">
+          <span class="md-nav__icon md-icon"></span>
+          Configmgmt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1" id="__nav_2_93_1_label" tabindex="0">
+          Ansible scenario3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1_1" id="__nav_2_93_1_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_1_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_1_1_1" id="__nav_2_93_1_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_1_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_1_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2" id="__nav_2_93_2_label" tabindex="0">
+          Ansible scenario4
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2_1" id="__nav_2_93_2_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_2_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_2_1_1" id="__nav_2_93_2_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_2_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario4/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3" id="__nav_2_93_3_label" tabindex="0">
+          Ansible scenario5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3_1" id="__nav_2_93_3_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_3_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_3_1_1" id="__nav_2_93_3_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_3_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_3_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario5/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4" id="__nav_2_93_4_label" tabindex="0">
+          Ansible scenario6
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario6
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4_1" id="__nav_2_93_4_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_4_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_4_1_1" id="__nav_2_93_4_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_4_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario6/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5" id="__nav_2_93_5_label" tabindex="0">
+          Ansible scenario7
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_93_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible scenario7
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1" id="__nav_2_93_5_1_label" tabindex="0">
+          Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_93_5_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Roles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1_1" id="__nav_2_93_5_1_1_label" tabindex="0">
+          Apache2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_5_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Apache2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario7/roles/apache2/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_93_5_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_93_5_1_2" id="__nav_2_93_5_1_2_label" tabindex="0">
+          Mysql
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_93_5_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_93_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mysql
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configmgmt/ansible-scenario7/roles/mysql/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_94" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_94" id="__nav_2_94_label" tabindex="0">
+          Containers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_94_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_94">
+          <span class="md-nav__icon md-icon"></span>
+          Containers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_94_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_94_1" id="__nav_2_94_1_label" tabindex="0">
+          Elasticsearch logstash kibana
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_94_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_94_1">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch logstash kibana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95" id="__nav_2_95_label" tabindex="0">
+          Monitoring
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_95_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95">
+          <span class="md-nav__icon md-icon"></span>
+          Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1" id="__nav_2_95_1_label" tabindex="0">
+          Elastic Stack
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_95_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1">
+          <span class="md-nav__icon md-icon"></span>
+          Elastic Stack
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1" id="__nav_2_95_1_1_label" tabindex="0">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_95_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+        Extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_2" id="__nav_2_95_1_1_2_label" tabindex="0">
+          Apm server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Apm server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/apm-server/" class="md-nav__link">
+        APM Server extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_3" id="__nav_2_95_1_1_3_label" tabindex="0">
+          Curator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Curator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/curator/" class="md-nav__link">
+        Curator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_4" id="__nav_2_95_1_1_4_label" tabindex="0">
+          Enterprise search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Enterprise search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/enterprise-search/" class="md-nav__link">
+        Enterprise Search extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_5" id="__nav_2_95_1_1_5_label" tabindex="0">
+          Filebeat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Filebeat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/filebeat/" class="md-nav__link">
+        Filebeat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_6" id="__nav_2_95_1_1_6_label" tabindex="0">
+          Logspout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Logspout
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/logspout/" class="md-nav__link">
+        Logspout extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_95_1_1_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_95_1_1_7" id="__nav_2_95_1_1_7_label" tabindex="0">
+          Metricbeat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_2_95_1_1_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_95_1_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Metricbeat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring/Elastic%20Stack/extensions/metricbeat/" class="md-nav__link">
+        Metricbeat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-storage-models" class="md-nav__link">
+    Microsoft Azure Storage Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Azure Storage Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-services" class="md-nav__link">
+    Storage Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-disks" class="md-nav__link">
+    Managed Disks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine-storage" class="md-nav__link">
+    Virtual Machine Storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-storage" class="md-nav__link">
+    Archive Storage
+  </a>
+  
+    <nav class="md-nav" aria-label="Archive Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-sharing" class="md-nav__link">
+    File Sharing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-media-services" class="md-nav__link">
+    Caching &amp; Media Services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-database-models" class="md-nav__link">
+    Microsoft Azure Database Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Azure Database Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relational-databases" class="md-nav__link">
+    Relational Databases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nosql-solutions" class="md-nav__link">
+    NoSQL Solutions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>#90DaysOfDevOps - Microsoft Azure Storage Models - Day 32</h1>
+
+<h2 id="microsoft-azure-storage-models">Microsoft Azure Storage Models</h2>
+<h3 id="storage-services">Storage Services</h3>
+<ul>
+<li>Azure storage services are provided by storage accounts.</li>
+<li>Storage accounts are primarily accessed via REST API.</li>
+<li>A storage account must have a unique name that is part of a DNS name <code>&lt;Storage Account name&gt;.core.windows.net</code></li>
+<li>Various replication and encryption options.</li>
+<li>Sits within a resource group</li>
+</ul>
+<p>We can create our storage group by simply searching for Storage Group in the search bar at the top of the Azure Portal.</p>
+<p><img alt="" src="../Images/Day32_Cloud1.png" /></p>
+<p>We can then run through the steps to create our storage account remembering that this name needs to be unique and it also needs to be all lower case, with no spaces but can include numbers.</p>
+<p><img alt="" src="../Images/Day32_Cloud2.png" /></p>
+<p>We can also choose the level of redundancy we would like against our storage account and anything we store here. The further down the list the more expensive option but also the spread of your data.</p>
+<p>Even the default redundancy option gives us 3 copies of our data.</p>
+<p><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy">Azure Storage Redundancy</a></p>
+<p>Summary of the above link down below:</p>
+<ul>
+<li><strong>Locally-redundant storage</strong> - replicates your data three times within a single data centre in the primary region.</li>
+<li><strong>Geo-redundant storage</strong> - copies your data synchronously three times within a single physical location in the primary region using LRS.</li>
+<li><strong>Zone-redundant storage</strong> - replicates your Azure Storage data synchronously across three Azure availability zones in the primary region.</li>
+<li><strong>Geo-zone-redundant storage</strong> - combines the high availability provided by redundancy across availability zones with protection from regional outages provided by geo-replication. Data in a GZRS storage account is copied across three Azure availability zones in the primary region and is also replicated to a second geographic region for protection from regional disasters.</li>
+</ul>
+<p><img alt="" src="../Images/Day32_Cloud3.png" /></p>
+<p>Just moving back up to performance options. We have Standard and Premium to choose from. We have chosen Standard in our walkthrough but premium gives you some specific options.</p>
+<p><img alt="" src="../Images/Day32_Cloud4.png" /></p>
+<p>Then in the drop-down, you can see we have these three options to choose from.</p>
+<p><img alt="" src="../Images/Day32_Cloud5.png" /></p>
+<p>There are lots more advanced options available for your storage account but for now, we do not need to get into these areas. These options are around encryption and data protection.</p>
+<h3 id="managed-disks">Managed Disks</h3>
+<p>Storage access can be achieved in a few different ways.</p>
+<p>Authenticated access via:</p>
+<ul>
+<li>A shared key for full control.</li>
+<li>Shared Access Signature for delegated, granular access.</li>
+<li>Azure Active Directory (Where Available)</li>
+</ul>
+<p>Public Access:</p>
+<ul>
+<li>Public access can also be granted to enable anonymous access including via HTTP.</li>
+<li>An example of this could be to host basic content and files in a block blob so a browser can view and download this data.</li>
+</ul>
+<p>If you are accessing your storage from another Azure service, traffic stays within Azure.</p>
+<p>When it comes to storage performance we have two different types:</p>
+<ul>
+<li><strong>Standard</strong> - Maximum number of IOPS</li>
+<li><strong>Premium</strong> - Guaranteed number of IOPS</li>
+</ul>
+<p>IOPS =&gt; Input/Output operations per sec.</p>
+<p>There is also a difference between unmanaged and managed disks to consider when choosing the right storage for the task you have.</p>
+<h3 id="virtual-machine-storage">Virtual Machine Storage</h3>
+<ul>
+<li>Virtual Machine OS disks are typically stored on persistent storage.</li>
+<li>Some stateless workloads do not require persistent storage and reduced latency is a larger benefit.</li>
+<li>There are VMs that support ephemeral OS-managed disks that are created on the node-local storage.</li>
+<li>These can also be used with VM Scale Sets.</li>
+</ul>
+<p>Managed Disks are durable block storage that can be used with Azure Virtual Machines. You can have Ultra Disk Storage, Premium SSD, Standard SSD, or Standard HDD. They also carry some characteristics.</p>
+<ul>
+<li>Snapshot and Image support</li>
+<li>Simple movement between SKUs</li>
+<li>Better availability when combined with availability sets</li>
+<li>Billed based on disk size not on consumed storage.</li>
+</ul>
+<h2 id="archive-storage">Archive Storage</h2>
+<ul>
+<li><strong>Cool Tier</strong> - A cool tier of storage is available to block and append blobs.</li>
+<li>Lower Storage cost</li>
+<li>Higher transaction cost.</li>
+<li><strong>Archive Tier</strong> - Archive storage is available for block BLOBs.</li>
+<li>This is configured on a per-BLOB basis.</li>
+<li>Cheaper cost, Longer Data retrieval latency.</li>
+<li>Same Data Durability as regular Azure Storage.</li>
+<li>Custom Data tiering can be enabled as required.</li>
+</ul>
+<h3 id="file-sharing">File Sharing</h3>
+<p>From the above creation of our storage account, we can now create file shares.</p>
+<p><img alt="" src="../Images/Day32_Cloud6.png" /></p>
+<p>This will provide SMB2.1 and 3.0 file shares in Azure.</p>
+<p>Useable within the Azure and externally via SMB3 and port 445 open to the internet.</p>
+<p>Provides shared file storage in Azure.</p>
+<p>Can be mapped using standard SMB clients in addition to REST API.</p>
+<p>You might also notice <a href="https://vzilla.co.uk/vzilla-blog/azure-netapp-files-how">Azure NetApp Files</a> (SMB and NFS)</p>
+<h3 id="caching-media-services">Caching &amp; Media Services</h3>
+<p>The Azure Content Delivery Network provides a cache of static web content with locations throughout the world.</p>
+<p>Azure Media Services, provides media transcoding technologies in addition to playback services.</p>
+<h2 id="microsoft-azure-database-models">Microsoft Azure Database Models</h2>
+<p>Back on <a href="../day28/">Day 28</a>, we covered various service options. One of these was PaaS (Platform as a Service) where you abstract a large amount of the infrastructure and operating system away and you are left with the control of the application or in this case the database models.</p>
+<h3 id="relational-databases">Relational Databases</h3>
+<p>Azure SQL Database provides a relational database as a service based on Microsoft SQL Server.</p>
+<p>This is SQL running the latest SQL branch with database compatibility level available where a specific functionality version is required.</p>
+<p>There are a few options on how this can be configured, we can provide a single database that provides one database in the instance, while an elastic pool enables multiple databases that share a pool of capacity and collectively scale.</p>
+<p>These database instances can be accessed like regular SQL instances.</p>
+<p>Additional managed offerings for MySQL, PostgreSQL and MariaDB.</p>
+<p><img alt="" src="../Images/Day32_Cloud7.png" /></p>
+<h3 id="nosql-solutions">NoSQL Solutions</h3>
+<p>Azure Cosmos DB is a scheme agnostic NoSQL implementation.</p>
+<p>99.99% SLA</p>
+<p>Globally distributed database with single-digit latencies at the 99th percentile anywhere in the world with automatic homing.</p>
+<p>Partition key leveraged for the partitioning/sharding/distribution of data.</p>
+<p>Supports various data models (documents, key-value, graph, column-friendly)</p>
+<p>Supports various APIs (DocumentDB SQL, MongoDB, Azure Table Storage and Gremlin)</p>
+<p><img alt="" src="../Images/Day32_Cloud9.png" /></p>
+<p>Various consistency models are available based around <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP theorem</a>.</p>
+<p><img alt="" src="../Images/Day32_Cloud8.png" /></p>
+<h3 id="caching">Caching</h3>
+<p>Without getting into the weeds about caching systems such as Redis I wanted to include that Microsoft Azure has a service called Azure Cache for Redis.</p>
+<p>Azure Cache for Redis provides an in-memory data store based on the Redis software.</p>
+<ul>
+<li>It is an implementation of the open-source Redis Cache.</li>
+<li>A hosted, secure Redis cache instance.</li>
+<li>Different tiers are available</li>
+<li>Application must be updated to leverage the cache.</li>
+<li>Aimed for an application that has high read requirements compared to writes.</li>
+<li>Key-Value store based.</li>
+</ul>
+<p><img alt="" src="../Images/Day32_Cloud10.png" /></p>
+<p>I appreciate the last few days have been a lot of note-taking and theory on Microsoft Azure but I wanted to cover the building blocks before we get into the hands-on aspects of how these components come together and work.</p>
+<p>We have one more bit of theory remaining around networking before we can get some scenario-based deployments of services up and running. We also want to take a look at some of the different ways we can interact with Microsoft Azure vs just using the portal that we have been using so far.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qkj5W98Xdvw">Hybrid Cloud and MultiCloud</a></li>
+<li><a href="https://www.youtube.com/watch?v=NKEFWyqJ5XA&amp;list=WL&amp;index=130&amp;t=12s">Microsoft Azure Fundamentals</a></li>
+<li><a href="https://www.youtube.com/watch?v=UGRDM86MBIQ&amp;list=WL&amp;index=131&amp;t=10s">Google Cloud Digital Leader Certification Course</a></li>
+<li><a href="https://www.youtube.com/watch?v=ulprqHHWlng&amp;t=5352s">AWS Basics for Beginners - Full Course</a></li>
+</ul>
+<p>See you on <a href="../day33/">Day 33</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day31/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day33/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 90DaysOfDevOps
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>
